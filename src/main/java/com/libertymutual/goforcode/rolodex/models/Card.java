@@ -31,6 +31,8 @@ public class Card {
 	
 	//private List<PhoneNumber> phoneNumbers = null;
 	
+	public Card()	{}
+	
 	public Card(String firstName, String lastName, String title, String companyName)	{
 		this.firstName = firstName;
 		this.lastName = lastName;
