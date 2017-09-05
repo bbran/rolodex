@@ -7,8 +7,8 @@ import org.junit.Test;
 public class PhoneNumberTests {
 
 	@Test
-	public void () {
-		
+	public void test() {
+		fail("Not yet implemented");	
 	}
 
 }
