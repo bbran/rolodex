@@ -27,9 +27,16 @@ public class Card {
 	@Column
 	private String companyName;
 	
-	//private List<Address> addresses;
+	//private List<Address> addresses = null;
 	
-	//private List<PhoneNumber> phoneNumbers;
+	//private List<PhoneNumber> phoneNumbers = null;
+	
+	public Card(String firstName, String lastName, String title, String companyName)	{
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.title = title;
+		this.companyName = companyName;
+	}
 
 	public Long getId() {
 		return id;
