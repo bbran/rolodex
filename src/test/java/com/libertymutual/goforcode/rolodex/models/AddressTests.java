@@ -6,9 +6,9 @@ import org.junit.Test;
 
 public class AddressTests {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void test() {
+//		fail("Not yet implemented");
+//	}
 
 }
