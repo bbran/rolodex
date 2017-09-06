@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.Before;
 import com.libertymutual.goforcode.rolodex.models.Card;
+import com.libertymutual.goforcode.rolodex.models.EntityNotFoundException;
 import com.libertymutual.goforcode.rolodex.repositories.CardRepo;
 
 
@@ -44,7 +45,7 @@ public class CardApiControllerTests {
 	
 	
 	@Test
-	public void test_to_ensure_that_getOne_returns_one_card() {
+	public void test_to_ensure_that_getOne_returns_one_card() throws EntityNotFoundException {
 		//arrange
 		Card randomCard = new Card();
 		when(cardRepo.findOne(4l)).thenReturn(randomCard);
