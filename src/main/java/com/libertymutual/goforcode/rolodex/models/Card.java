@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Card {
@@ -27,9 +28,11 @@ public class Card {
 	@Column
 	private String companyName;
 	
-	//private List<Address> addresses = null;
+	@OneToMany(mappedBy="card")
+	private List<Address> addresses;
 	
-	//private List<PhoneNumber> phoneNumbers = null;
+	@OneToMany(mappedBy="card")
+	private List<PhoneNumber> phoneNumbers;
 	
 	public Card()	{}
 	
@@ -78,6 +81,22 @@ public class Card {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public List<PhoneNumber> getPhoneNumbers() {
+		return phoneNumbers;
+	}
+
+	public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+		this.phoneNumbers = phoneNumbers;
 	}
 	
 }
