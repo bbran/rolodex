@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PhoneNumber {
@@ -17,6 +18,17 @@ public class PhoneNumber {
 	
 	@Column(nullable=false)
 	private Long phoneNumber;
+	
+	@ManyToOne
+	private Card card;
+	
+	public PhoneNumber() {}
+	
+	public PhoneNumber(String type, Long phoneNumber, Card card)	{
+		this.type = type;
+		this.phoneNumber = phoneNumber;
+		this.card = card;
+	}
 
 	public Long getId() {
 		return id;
@@ -40,6 +52,14 @@ public class PhoneNumber {
 
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Card getCard() {
+		return card;
+	}
+
+	public void setCard(Card card) {
+		this.card = card;
 	}
 	
 

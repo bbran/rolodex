@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Address {
@@ -26,6 +27,21 @@ public class Address {
 	
 	@Column(nullable=true)
 	private int zipCode;
+	
+	@ManyToOne
+	private Card card;
+	
+	public Address() {}
+	
+	public Address(String type, String street, String city, String state, int zipCode, Card card)	{
+		this.type = type;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.card = card;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -73,6 +89,14 @@ public class Address {
 
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public Card getCard() {
+		return card;
+	}
+
+	public void setCard(Card card) {
+		this.card = card;
 	}
 	
 }
