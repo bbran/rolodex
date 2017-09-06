@@ -102,7 +102,6 @@ public class CardApiControllerTests {
 		//assert
 		assertThat(cardReturned).isNull();
 		verify(cardRepo).findOne(1L);
-		verify(cardRepo).delete(1L);
 	}
 	
 	
