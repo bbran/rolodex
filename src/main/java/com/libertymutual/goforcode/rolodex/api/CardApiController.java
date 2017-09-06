@@ -55,7 +55,7 @@ public class CardApiController {
 	@GetMapping("")
 	public List<Card> getAll(String lastName)	{
 		if (lastName != null) {
-			
+			cardRepo.findByLastName(lastName);
 		} 
 		return cardRepo.findAll();
 		
