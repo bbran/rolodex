@@ -20,7 +20,7 @@ public class CardApiControllerTests {
 	@Before
 	public void setUp() {
 		cardRepo = mock(CardRepo.class);
-		controller = new CardApiController(cardRepo);
+//		controller = new CardApiController(cardRepo);
 	}
 	
 	
