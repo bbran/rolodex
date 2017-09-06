@@ -8,7 +8,11 @@ import org.junit.Test;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.junit.Before;
 import com.libertymutual.goforcode.rolodex.models.Card;
+<<<<<<< HEAD
 import com.libertymutual.goforcode.rolodex.repositories.AddressRepo;
+=======
+import com.libertymutual.goforcode.rolodex.models.EntityNotFoundException;
+>>>>>>> 11af448c92174ef36b87e7aea44edd88ec1053fc
 import com.libertymutual.goforcode.rolodex.repositories.CardRepo;
 import com.libertymutual.goforcode.rolodex.repositories.PhoneNumberRepo;
 
@@ -49,7 +53,7 @@ public class CardApiControllerTests {
 	
 	
 	@Test
-	public void test_to_ensure_that_getOne_returns_one_card() {
+	public void test_to_ensure_that_getOne_returns_one_card() throws EntityNotFoundException {
 		//arrange
 		Card randomCard = new Card();
 		when(cardRepo.findOne(4l)).thenReturn(randomCard);

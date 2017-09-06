@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.libertymutual.goforcode.rolodex.models.Address;
 import com.libertymutual.goforcode.rolodex.models.Card;
+import com.libertymutual.goforcode.rolodex.models.EntityNotFoundException;
 import com.libertymutual.goforcode.rolodex.models.PhoneNumber;
 import com.libertymutual.goforcode.rolodex.repositories.AddressRepo;
 import com.libertymutual.goforcode.rolodex.repositories.CardRepo;
@@ -52,16 +53,19 @@ public class CardApiController {
 	}
 	
 	@GetMapping("")
-	public List<Card> getAll()	{
+	public List<Card> getAll(String lastName)	{
+		if (lastName != null) {
+			cardRepo.findByLastName(lastName);
+		} 
 		return cardRepo.findAll();
+		
 	}
 	
 	@GetMapping("{id}")
-	public Card getOne(@PathVariable long id)	{
+	public Card getOne(@PathVariable long id) throws EntityNotFoundException	{
 		Card card = cardRepo.findOne(id);
 		if (card == null) {
-			//TODO we need an exception here
-			//			return null;
+			throw new EntityNotFoundException();
 		}
 		return card;
 	}
@@ -92,7 +96,7 @@ public class CardApiController {
 	@PostMapping("{id}/addresses")
 	public Card createAddressForCard(@PathVariable long id, @RequestBody Address address)	{
 		Card card = cardRepo.findOne(id);
-					
+		address.setCard(card);			
 		addressRepo.save(address);
 		return card;
 	}
@@ -101,13 +105,43 @@ public class CardApiController {
 	public Card createPhoneNumberForCard(@PathVariable long id, @RequestBody PhoneNumber phoneNumber)	{
 		Card card = cardRepo.findOne(id);
 		phoneNumber = phoneNumberRepo.findOne(phoneNumber.getId());
-		
-			
+		phoneNumber.setCard(card);	
 		phoneNumberRepo.save(phoneNumber);
 		return card;
 	}
 	
+	@DeleteMapping("{id}/addresses/{add_id}")
+	public Card deleteAddress(@PathVariable long id, @PathVariable long add_id) {
+	try {
+		Card card = cardRepo.findOne(id);
+		Address address = addressRepo.findOne(add_id);
+		addressRepo.delete(address);;
+		return card;
+	} catch (EmptyResultDataAccessException erdae) {
+		return null;
+	}
+	}
+	
+	@DeleteMapping("{id}/addresses/{pho_id}")
+	public Card deletePhone(@PathVariable long id, @PathVariable long pho_id) {
+	try {
+		Card card = cardRepo.findOne(id);
+		PhoneNumber phoneNumber = phoneNumberRepo.findOne(pho_id);
+		phoneNumberRepo.delete(phoneNumber);
+		return card;
+	} catch (EmptyResultDataAccessException erdae) {
+		return null;
+	}
+	}
+
+	
+	//TODO update first/last/title/company for card
 	
 	
+	//TODO update an address for a card
+	
+	//TODO update a phone number for a card
+	
+	//TODO picture stuff?
 
 }
