@@ -55,7 +55,7 @@ public class CardApiController {
 	@GetMapping("")
 	public List<Card> getAll(String lastName)	{
 		if (lastName != null) {
-			cardRepo.findByLastName(lastName);
+			return cardRepo.findByLastName(lastName);
 		} 
 		return cardRepo.findAll();
 		
@@ -104,7 +104,6 @@ public class CardApiController {
 	@PostMapping("{id}/phones")
 	public Card createPhoneNumberForCard(@PathVariable long id, @RequestBody PhoneNumber phoneNumber)	{
 		Card card = cardRepo.findOne(id);
-		phoneNumber = phoneNumberRepo.findOne(phoneNumber.getId());
 		phoneNumber.setCard(card);	
 		phoneNumberRepo.save(phoneNumber);
 		return card;
@@ -115,7 +114,7 @@ public class CardApiController {
 	try {
 		Card card = cardRepo.findOne(id);
 		Address address = addressRepo.findOne(add_id);
-		addressRepo.delete(address);;
+		addressRepo.delete(address);
 		return card;
 	} catch (EmptyResultDataAccessException erdae) {
 		return null;

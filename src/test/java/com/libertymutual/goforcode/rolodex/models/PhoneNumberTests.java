@@ -1,14 +1,30 @@
 package com.libertymutual.goforcode.rolodex.models;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.Test;
+import org.meanbean.test.BeanTester;
 
 public class PhoneNumberTests {
 
-//	@Test
-//	public void test() {
-//		fail("Not yet implemented");	
-//	}
+	@Test
+	public void test_PhoneNumber() {
+		BeanTester beanTester = new BeanTester();	
+		beanTester.testBean(PhoneNumber.class);
+	}
+	
+	@Test
+	public void test_constructor()	{
+		//arrange
+		Card card = new Card();
+		
+		//act
+		PhoneNumber phoneNumber = new PhoneNumber("Home", 1234567L, card);
+		
+		//assert
+		assertThat(phoneNumber.getType()).isEqualTo("Home");
+		assertThat(phoneNumber.getPhoneNumber()).isEqualTo(1234567L);
+		assertThat(phoneNumber.getCard()).isSameAs(card);
+	}
 
 }
