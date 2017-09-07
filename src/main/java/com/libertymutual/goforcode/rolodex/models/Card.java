@@ -33,6 +33,9 @@ public class Card {
 	@Column
 	private String companyName;
 	
+	@Column
+	private String pictureUrl;
+	
 	@OneToMany(mappedBy="card")
 	private List<Address> addresses;
 	
@@ -41,11 +44,12 @@ public class Card {
 	
 	public Card()	{}
 	
-	public Card(String firstName, String lastName, String title, String companyName)	{
+	public Card(String firstName, String lastName, String title, String companyName, String pictureUrl)	{
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.title = title;
 		this.companyName = companyName;
+		this.pictureUrl = pictureUrl;
 	}
 
 	public Long getId() {
@@ -102,6 +106,14 @@ public class Card {
 
 	public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
+	}
+
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
 	}
 	
 }
