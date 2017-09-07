@@ -77,13 +77,13 @@ public class CardApiController {
 	
 	@DeleteMapping("{id}")
 	public Card delete(@PathVariable long id) {
-	try {
-		Card card = cardRepo.findOne(id);
-		cardRepo.delete(id);
-		return card;
-	} catch (EmptyResultDataAccessException erdae) {
-		return null;
-	}
+		try {
+			Card card = cardRepo.findOne(id);
+			cardRepo.delete(id);
+			return card;
+		} catch (EmptyResultDataAccessException erdae) {
+			return null;
+		}
 	}
 
 	@PutMapping("{id}")
@@ -111,36 +111,38 @@ public class CardApiController {
 	
 	@DeleteMapping("{id}/addresses/{add_id}")
 	public Card deleteAddress(@PathVariable long id, @PathVariable long add_id) {
-	try {
-		Card card = cardRepo.findOne(id);
-		Address address = addressRepo.findOne(add_id);
-		addressRepo.delete(address);
-		return card;
-	} catch (EmptyResultDataAccessException erdae) {
-		return null;
-	}
+		try {
+			Card card = cardRepo.findOne(id);
+			Address address = addressRepo.findOne(add_id);
+			addressRepo.delete(address);
+			return card;
+		} catch (EmptyResultDataAccessException erdae) {
+			return null;
+		}
 	}
 	
-	@DeleteMapping("{id}/addresses/{pho_id}")
+	@DeleteMapping("{id}/phones/{pho_id}")
 	public Card deletePhone(@PathVariable long id, @PathVariable long pho_id) {
-	try {
-		Card card = cardRepo.findOne(id);
-		PhoneNumber phoneNumber = phoneNumberRepo.findOne(pho_id);
-		phoneNumberRepo.delete(phoneNumber);
-		return card;
-	} catch (EmptyResultDataAccessException erdae) {
-		return null;
-	}
+		try {
+			Card card = cardRepo.findOne(id);
+			PhoneNumber phoneNumber = phoneNumberRepo.findOne(pho_id);
+			phoneNumberRepo.delete(phoneNumber);
+			return card;
+		} catch (EmptyResultDataAccessException erdae) {
+			return null;
+		}
 	}
 
+	@PutMapping("{id}/addresses/{add_id}")
+	public Address updateAddress(@RequestBody Address address, @PathVariable long add_id)	{
+		address.setId(add_id);
+		return addressRepo.save(address);
+	}
 	
-	//TODO update first/last/title/company for card
-	
-	
-	//TODO update an address for a card
-	
-	//TODO update a phone number for a card
-	
-	//TODO picture stuff?
+	@PutMapping("{id}/phones/{pho_id}")
+	public PhoneNumber updatePhone(@RequestBody PhoneNumber phoneNumber, @PathVariable long pho_id)	{
+		phoneNumber.setId(pho_id);
+		return phoneNumberRepo.save(phoneNumber);
+	}
 
 }
