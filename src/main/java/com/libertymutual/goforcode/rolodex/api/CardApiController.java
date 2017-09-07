@@ -20,6 +20,8 @@ import com.libertymutual.goforcode.rolodex.repositories.AddressRepo;
 import com.libertymutual.goforcode.rolodex.repositories.CardRepo;
 import com.libertymutual.goforcode.rolodex.repositories.PhoneNumberRepo;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/cards")
 public class CardApiController {
@@ -132,16 +134,20 @@ public class CardApiController {
 			return null;
 		}
 	}
-
+	
+	@ApiOperation(notes="In the address object body, either pass an embedded card object, or omit the card attribute entirely", value = "Update Address")
 	@PutMapping("{id}/addresses/{add_id}")
-	public Address updateAddress(@RequestBody Address address, @PathVariable long add_id)	{
+	public Address updateAddress(@RequestBody Address address, @PathVariable long id, @PathVariable long add_id)	{
 		address.setId(add_id);
+		address.setCard(cardRepo.findOne(id));
 		return addressRepo.save(address);
 	}
 	
+	@ApiOperation(notes="In the phoneNumber object body, either pass an embedded card object, or omit the card attribute entirely", value = "Update PhoneNumber")
 	@PutMapping("{id}/phones/{pho_id}")
-	public PhoneNumber updatePhone(@RequestBody PhoneNumber phoneNumber, @PathVariable long pho_id)	{
+	public PhoneNumber updatePhone(@RequestBody PhoneNumber phoneNumber, @PathVariable long id, @PathVariable long pho_id)	{
 		phoneNumber.setId(pho_id);
+		phoneNumber.setCard(cardRepo.findOne(id));
 		return phoneNumberRepo.save(phoneNumber);
 	}
 
