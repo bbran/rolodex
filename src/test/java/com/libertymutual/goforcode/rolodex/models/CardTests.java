@@ -23,6 +23,6 @@ public class CardTests {
 		assertThat(card.getLastName()).isEqualTo("Jones");
 		assertThat(card.getTitle()).isEqualTo("Director");
 		assertThat(card.getCompanyName()).isEqualTo("Liberty Mutual");
+		assertThat(card.getPictureUrl()).isEqualTo("https://www.libertymutual.com/");
 	}
-
 }
