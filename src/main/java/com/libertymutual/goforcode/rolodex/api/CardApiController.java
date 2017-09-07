@@ -34,24 +34,28 @@ public class CardApiController {
 		this.addressRepo = addressRepo;
 		this.phoneNumberRepo = phoneNumberRepo;
 		
-		Card card1 = new Card("Steve1", "Jones", "The Boss", "Liberty Mutual");
-		Card card2 = new Card("Steve2", "Jones", "The Boss", "Liberty Mutual");
-		Card card3 = new Card("Steve3", "Jones", "The Boss", "Liberty Mutual");
+		Card card1 = new Card("Steve1", "Jones", "The Boss", "Liberty Mutual", "https://www.libertymutual.com/");
+		Card card2 = new Card("Steve2", "Jones", "The Boss", "Liberty Mutual", "https://www.libertymutual.com/");
+		Card card3 = new Card("Steve3", "Jones", "The Boss", "Liberty Mutual", "https://www.libertymutual.com/");
 		cardRepo.save(card1);
 		cardRepo.save(card2);
 		cardRepo.save(card3);
 		Address address1 = new Address("Home", "123 Fake St.", "Fakesville", "DE", 12345, card1);
 		Address address2 = new Address("Home", "456 Fake St.", "Fakesville", "DE", 12345, card2);
 		Address address3 = new Address("Home", "567 Fake St.", "Fakesville", "DE", 12345, card3);
+		Address address4 = new Address("Work", "100 Main St.", "Dover", "NH", 12345, card1);
 		addressRepo.save(address1);
 		addressRepo.save(address2);
 		addressRepo.save(address3);
+		addressRepo.save(address4);
 		PhoneNumber phoneNumber1 = new PhoneNumber("Work", 1234567L, card1);
+		PhoneNumber phoneNumber4 = new PhoneNumber("Cell", 6665210L, card1);
 		PhoneNumber phoneNumber2 = new PhoneNumber("Work", 9876543210L, card2);
 		PhoneNumber phoneNumber3 = new PhoneNumber("Work", 18888675309L, card3);
 		phoneNumberRepo.save(phoneNumber1);
 		phoneNumberRepo.save(phoneNumber2);
 		phoneNumberRepo.save(phoneNumber3);
+		phoneNumberRepo.save(phoneNumber4);
 	}
 	
 	@GetMapping("")
