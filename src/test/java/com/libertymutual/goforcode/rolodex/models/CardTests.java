@@ -16,7 +16,7 @@ public class CardTests {
 	@Test
 	public void test_constructor()	{
 		//act
-		Card card = new Card("Bob", "Jones", "Director", "Liberty Mutual");
+		Card card = new Card("Bob", "Jones", "Director", "Liberty Mutual", "https://www.libertymutual.com/");
 		
 		//assert
 		assertThat(card.getFirstName()).isEqualTo("Bob");
