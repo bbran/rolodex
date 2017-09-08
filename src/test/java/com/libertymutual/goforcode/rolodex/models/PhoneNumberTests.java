@@ -22,7 +22,7 @@ public class PhoneNumberTests {
 		PhoneNumber phoneNumber = new PhoneNumber("Home", "1234567", card);
 		
 		//assert
-		assertThat(phoneNumber.getType()).isEqualTo("Home");
+		assertThat(phoneNumber.getPhoneNumberType()).isEqualTo("Home");
 		assertThat(phoneNumber.getPhoneNumber()).isEqualTo("1234567");
 		assertThat(phoneNumber.getCard()).isSameAs(card);
 	}
