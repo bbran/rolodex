@@ -16,13 +16,13 @@ public class CardTests {
 	@Test
 	public void test_constructor()	{
 		//act
-		Card card = new Card("Bob", "Jones", "Director", "Liberty Mutual");
+		Card card = new Card("Bob", "Jones", "Director", "Liberty Mutual", "https://www.libertymutual.com/");
 		
 		//assert
 		assertThat(card.getFirstName()).isEqualTo("Bob");
 		assertThat(card.getLastName()).isEqualTo("Jones");
 		assertThat(card.getTitle()).isEqualTo("Director");
 		assertThat(card.getCompanyName()).isEqualTo("Liberty Mutual");
+		assertThat(card.getPictureUrl()).isEqualTo("https://www.libertymutual.com/");
 	}
-
 }

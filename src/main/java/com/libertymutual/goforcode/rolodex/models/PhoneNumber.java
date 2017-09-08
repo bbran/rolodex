@@ -19,18 +19,18 @@ public class PhoneNumber {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String type;
+	private String phoneNumberType;
 	
 	@Column(nullable=false)
-	private Long phoneNumber;
+	private String phoneNumber;
 	
 	@ManyToOne
 	private Card card;
 	
 	public PhoneNumber() {}
 	
-	public PhoneNumber(String type, Long phoneNumber, Card card)	{
-		this.type = type;
+	public PhoneNumber(String phoneNumberType, String phoneNumber, Card card)	{
+		this.phoneNumberType = phoneNumberType;
 		this.phoneNumber = phoneNumber;
 		this.card = card;
 	}
@@ -43,19 +43,19 @@ public class PhoneNumber {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getPhoneNumberType() {
+		return phoneNumberType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setPhoneNumberType(String phoneNumberType) {
+		this.phoneNumberType = phoneNumberType;
 	}
 
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

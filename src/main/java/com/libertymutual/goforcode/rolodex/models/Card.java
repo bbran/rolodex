@@ -2,6 +2,7 @@ package com.libertymutual.goforcode.rolodex.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,19 +34,23 @@ public class Card {
 	@Column
 	private String companyName;
 	
-	@OneToMany(mappedBy="card")
+	@Column
+	private String pictureUrl;
+	
+	@OneToMany(mappedBy="card", cascade= CascadeType.ALL)
 	private List<Address> addresses;
 	
-	@OneToMany(mappedBy="card")
+	@OneToMany(mappedBy="card", cascade= CascadeType.ALL)
 	private List<PhoneNumber> phoneNumbers;
 	
 	public Card()	{}
 	
-	public Card(String firstName, String lastName, String title, String companyName)	{
+	public Card(String firstName, String lastName, String title, String companyName, String pictureUrl)	{
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.title = title;
 		this.companyName = companyName;
+		this.pictureUrl = pictureUrl;
 	}
 
 	public Long getId() {
@@ -102,6 +107,14 @@ public class Card {
 
 	public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
+	}
+
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
 	}
 	
 }

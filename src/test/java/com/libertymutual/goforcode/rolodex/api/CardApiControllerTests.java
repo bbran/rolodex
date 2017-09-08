@@ -32,6 +32,45 @@ public class CardApiControllerTests {
 		controller = new CardApiController(cardRepo, addressRepo, phoneNumberRepo);
 	}
 	
+	
+	@Test
+	public void test_updateAddress_returns_address_with_passed_address_id_and_card()	{
+		//arrange
+		Card card = new Card();
+		Address address = new Address();
+		when(cardRepo.findOne(1L)).thenReturn(card);
+		when(addressRepo.save(address)).thenReturn(address);
+		
+		//act
+		Address addressReturned = controller.updateAddress(address, 1L, 2L);
+		
+		//assert
+		assertThat(addressReturned).isSameAs(address);
+		assertThat(addressReturned.getId()).isEqualTo(2L);
+		assertThat(addressReturned.getCard()).isSameAs(card);
+		verify(cardRepo).findOne(1L);
+		verify(addressRepo).save(address);
+	}
+	
+	@Test
+	public void test_updatePhone_returns_phones_with_passed_phone_id_and_card()	{
+		//arrange
+		Card card = new Card();
+		PhoneNumber phoneNumber = new PhoneNumber();
+		when(cardRepo.findOne(1L)).thenReturn(card);
+		when(phoneNumberRepo.save(phoneNumber)).thenReturn(phoneNumber);
+		
+		//act
+		PhoneNumber phoneNumberReturned = controller.updatePhone(phoneNumber, 1L, 2L);
+		
+		//assert
+		assertThat(phoneNumberReturned).isSameAs(phoneNumber);
+		assertThat(phoneNumberReturned.getId()).isEqualTo(2L);
+		assertThat(phoneNumberReturned.getCard()).isSameAs(card);
+		verify(cardRepo).findOne(1L);
+		verify(phoneNumberRepo).save(phoneNumber);
+	}
+	
 	@Test
 	public void test_deletePhoneNumber_returns_card_from_which_phone_number_was_deleted()	{
 		//arrange
@@ -252,7 +291,5 @@ public class CardApiControllerTests {
 		assertThat(cardReturned).isNull();
 		verify(cardRepo).findOne(1L);
 	}
-	
-	
 
 }

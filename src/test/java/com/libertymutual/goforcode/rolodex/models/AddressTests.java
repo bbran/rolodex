@@ -19,14 +19,14 @@ public class AddressTests {
 		Card card = new Card();
 		
 		//act
-		Address address = new Address("Home", "123 Fake St.", "Fakesville", "DE", 12345, card);
+		Address address = new Address("Home", "123 Fake St.", "Fakesville", "DE", "12345", card);
 		
 		//assert
-		assertThat(address.getType()).isEqualTo("Home");
+		assertThat(address.getAddressType()).isEqualTo("Home");
 		assertThat(address.getStreet()).isEqualTo("123 Fake St.");
 		assertThat(address.getCity()).isEqualTo("Fakesville");
 		assertThat(address.getState()).isEqualTo("DE");
-		assertThat(address.getZipCode()).isEqualTo(12345);
+		assertThat(address.getZipCode()).isEqualTo("12345");
 		assertThat(address.getCard()).isSameAs(card);
 	}
 
