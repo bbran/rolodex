@@ -19,11 +19,11 @@ public class PhoneNumberTests {
 		Card card = new Card();
 		
 		//act
-		PhoneNumber phoneNumber = new PhoneNumber("Home", 1234567L, card);
+		PhoneNumber phoneNumber = new PhoneNumber("Home", "1234567", card);
 		
 		//assert
 		assertThat(phoneNumber.getType()).isEqualTo("Home");
-		assertThat(phoneNumber.getPhoneNumber()).isEqualTo(1234567L);
+		assertThat(phoneNumber.getPhoneNumber()).isEqualTo("1234567");
 		assertThat(phoneNumber.getCard()).isSameAs(card);
 	}
 

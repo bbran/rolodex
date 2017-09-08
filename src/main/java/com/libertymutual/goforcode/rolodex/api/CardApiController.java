@@ -48,10 +48,10 @@ public class CardApiController {
 		addressRepo.save(address2);
 		addressRepo.save(address3);
 		addressRepo.save(address4);
-		PhoneNumber phoneNumber1 = new PhoneNumber("Work", 1234567L, card1);
-		PhoneNumber phoneNumber4 = new PhoneNumber("Cell", 6665210L, card1);
-		PhoneNumber phoneNumber2 = new PhoneNumber("Work", 9876543210L, card2);
-		PhoneNumber phoneNumber3 = new PhoneNumber("Work", 18888675309L, card3);
+		PhoneNumber phoneNumber1 = new PhoneNumber("Work", "1234567", card1);
+		PhoneNumber phoneNumber4 = new PhoneNumber("Cell", "6665210", card1);
+		PhoneNumber phoneNumber2 = new PhoneNumber("Work", "9876543210", card2);
+		PhoneNumber phoneNumber3 = new PhoneNumber("Work", "18888675309", card3);
 		phoneNumberRepo.save(phoneNumber1);
 		phoneNumberRepo.save(phoneNumber2);
 		phoneNumberRepo.save(phoneNumber3);

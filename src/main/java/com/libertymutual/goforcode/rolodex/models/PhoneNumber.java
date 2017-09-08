@@ -22,14 +22,14 @@ public class PhoneNumber {
 	private String type;
 	
 	@Column(nullable=false)
-	private Long phoneNumber;
+	private String phoneNumber;
 	
 	@ManyToOne
 	private Card card;
 	
 	public PhoneNumber() {}
 	
-	public PhoneNumber(String type, Long phoneNumber, Card card)	{
+	public PhoneNumber(String type, String phoneNumber, Card card)	{
 		this.type = type;
 		this.phoneNumber = phoneNumber;
 		this.card = card;
@@ -51,11 +51,11 @@ public class PhoneNumber {
 		this.type = type;
 	}
 
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
