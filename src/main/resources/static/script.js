@@ -15,16 +15,51 @@ $(document).on('click', 'a[data-card-id]', function (e) {
 	});
 });
 
+$(searchbutton).on('click', function(e)	{
+	e.preventDefault();
+	const searchString = $('#searchbox');
+	console.log(searchString.val());
+	$('#card-list').html(``);
+	$.getJSON(baseurl + '?lastName=' + searchString.val(), function (data)	{
+		if (data.length)	{
+			for (let card of data)	{
+				$('<tr></tr>')
+				.html(`
+					<td>
+						<a href="#" data-card-id="${card.id}">
+							${card.firstName} ${card.lastName}
+						</a>	
+					</td>
+				`)
+				.appendTo($('#card-list'));
+				console.log(data);
+			}
+		} else	{
+			$('<tr></tr>')
+				.css('color', 'red')
+				.html('You have no data')
+				.appendTo($('#card-list'));
+		}
+	});
+
+});
+
 $.getJSON(baseurl, function (data)	{
 	if (data.length)	{
 		for (let card of data)	{
-			$('<li></li>')
-			.html('<a href="#" data-card-id="' + card.id + '">' + card.lastName + ', ' + card.firstName + '</a>')
+			$('<tr></tr>')
+			.html(`
+				<td>
+					<a href="#" data-card-id="${card.id}">
+						${card.firstName} ${card.lastName}
+					</a>	
+				</td>
+			`)
 			.appendTo($('#card-list'));
-			console.log(card);
+			console.log(data);
 		}
 	} else	{
-		$('<li></li>')
+		$('<tr></tr>')
 			.css('color', 'red')
 			.html('You have no data')
 			.appendTo($('#card-list'));
