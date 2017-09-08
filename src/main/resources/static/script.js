@@ -11,6 +11,26 @@ $(document).on('click', 'a[data-card-id]', function (e) {
 				<h1>${data.firstName} ${data.lastName}</h1>
 				<h2>${data.companyName}</h2>
 				<div>Title: ${data.title}</div>
+				<h2>Addresses</h2>
+				<table id="address-table" class="table">
+				  <thead>
+				    <tr>
+				     	<th>Name</th>
+				    </tr>
+				  </thead>
+				  <tbody id="address-list" >
+				  </tbody>
+				</table>
+				<h2>Phones</h2>
+				<table id="phone-table" class="table">
+				  <thead>
+				    <tr>
+				     	<th>Name</th>
+				    </tr>
+				  </thead>
+				  <tbody id="phone-list" >
+				  </tbody>
+				</table>
 			`);
 	});
 });
