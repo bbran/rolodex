@@ -40,10 +40,10 @@ public class CardApiController {
 		cardRepo.save(card1);
 		cardRepo.save(card2);
 		cardRepo.save(card3);
-		Address address1 = new Address("Home", "123 Fake St.", "Fakesville", "DE", 12345, card1);
-		Address address2 = new Address("Home", "456 Fake St.", "Fakesville", "DE", 12345, card2);
-		Address address3 = new Address("Home", "567 Fake St.", "Fakesville", "DE", 12345, card3);
-		Address address4 = new Address("Work", "100 Main St.", "Dover", "NH", 12345, card1);
+		Address address1 = new Address("Home", "123 Fake St.", "Fakesville", "DE", "12345", card1);
+		Address address2 = new Address("Home", "456 Fake St.", "Fakesville", "DE", "12345", card2);
+		Address address3 = new Address("Home", "567 Fake St.", "Fakesville", "DE", "12345", card3);
+		Address address4 = new Address("Work", "100 Main St.", "Dover", "NH", "12345", card1);
 		addressRepo.save(address1);
 		addressRepo.save(address2);
 		addressRepo.save(address3);

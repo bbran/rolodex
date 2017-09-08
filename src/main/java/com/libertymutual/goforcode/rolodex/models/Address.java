@@ -31,14 +31,14 @@ public class Address {
 	private String state;
 	
 	@Column(nullable=true)
-	private int zipCode;
+	private String zipCode;
 	
 	@ManyToOne
 	private Card card;
 	
 	public Address() {}
 	
-	public Address(String type, String street, String city, String state, int zipCode, Card card)	{
+	public Address(String type, String street, String city, String state, String zipCode, Card card)	{
 		this.type = type;
 		this.street = street;
 		this.city = city;
@@ -88,11 +88,11 @@ public class Address {
 		this.state = state;
 	}
 
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(int zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
