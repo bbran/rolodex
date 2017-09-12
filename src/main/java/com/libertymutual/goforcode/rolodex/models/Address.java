@@ -19,18 +19,18 @@ public class Address {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String type;
+	private String addressType;
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String street;
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String city;
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String state;
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String zipCode;
 	
 	@ManyToOne
@@ -38,8 +38,8 @@ public class Address {
 	
 	public Address() {}
 	
-	public Address(String type, String street, String city, String state, String zipCode, Card card)	{
-		this.type = type;
+	public Address(String addressType, String street, String city, String state, String zipCode, Card card)	{
+		this.addressType = addressType;
 		this.street = street;
 		this.city = city;
 		this.state = state;
@@ -56,12 +56,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getAddressType() {
+		return addressType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setAddressType(String addressType) {
+		this.addressType = addressType;
 	}
 
 	public String getStreet() {
