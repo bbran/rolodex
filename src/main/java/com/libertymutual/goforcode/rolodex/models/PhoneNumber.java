@@ -19,7 +19,7 @@ public class PhoneNumber {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String type;
+	private String phoneNumberType;
 	
 	@Column(nullable=false)
 	private String phoneNumber;
@@ -29,8 +29,8 @@ public class PhoneNumber {
 	
 	public PhoneNumber() {}
 	
-	public PhoneNumber(String type, String phoneNumber, Card card)	{
-		this.type = type;
+	public PhoneNumber(String phoneNumberType, String phoneNumber, Card card)	{
+		this.phoneNumberType = phoneNumberType;
 		this.phoneNumber = phoneNumber;
 		this.card = card;
 	}
@@ -43,12 +43,12 @@ public class PhoneNumber {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getPhoneNumberType() {
+		return phoneNumberType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setPhoneNumberType(String phoneNumberType) {
+		this.phoneNumberType = phoneNumberType;
 	}
 
 	public String getPhoneNumber() {
