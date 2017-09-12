@@ -1,0 +1,34 @@
+<!doctype html>
+	<html>
+		<head>
+			<title>new page for project</title>
+		</head>
+	
+	
+		<body>
+			<form id="create-card-form" method="post" action="/api/cards">
+				<input id="firstName" type="text" name="firstName" placeholder="First Name" required>
+				<br>
+				<input id="lastName" type="text" name="lastName" placeholder="Last Name" required>
+				<br>
+				<input id="title" type="text" name="title" placeholder="Title" required>
+				<br>
+				<input id="companyName" type="text" name="companyName" placeholder="Company Name">
+				<br>
+				<input id="pictureUrl" type="text" name="pictureUrl" placeholder="URL for your picture">
+				<br>
+				<button>Create a Card</button>
+			</form>
+			
+			<ul id="card-list"></ul>
+		
+			<div id="card-detail"></div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
+		<script src="app.js"></script>
+		
+		
+			
+		</body>
+	
+	</html>
